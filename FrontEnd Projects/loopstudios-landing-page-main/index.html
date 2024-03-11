@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Loopstudios landing page</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins";
+    }
+    ul{
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+    a{
+      text-decoration: none;
+      color: #fff;
+      font-size: 1rem;
+      position: relative;
+      padding: 8px 20px;
+    }
+    a::after{
+      height: 3px ;
+      background:#fff;
+      content: "";
+      transition: width  0.5s ease-in-out;
+      transform: translateX(50%);
+      right: 50%;
+      position: absolute;
+      bottom: 0;
+    }
+    a:hover::after{
+      width: 35px;
+      transform: translateX(50%);
+      right: 50%;
+    }
+    body{
+      height: 100vh;
+      width: 100vw;
+      font-family: 'Poppins',
+    }
+    header{
+      background: url(./images/desktop/image-hero.jpg) no-repeat center;
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+      color: #fff;
+      position: relative;
+      padding: 40px 200px;
+    }
+    nav{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .menu-button{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      height: 40px;
+      width: 40px;
+    }
+    .menu-button div{
+      height: 3px;
+      width: 100%;
+      background: #fff;
+    }
+    .menu-button{
+      display: none;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+    .page-title{
+      position: absolute;
+      width: 560px;
+      bottom: 130px;
+      border: 2px solid #fff;
+      padding: 20px;
+    }
+    .page-title h1{
+      font-size: 3.2rem;
+      padding: 0px 50px;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 8px;
+    }
+    .logo h1{
+      font-size: 2rem;
+    }
+    section{
+      display: flex;
+      width: 100%;
+      /* align-items: center; */
+      flex-direction: column;
+      gap:3rem;
+    }
+    .second-section{
+      padding: 130px 200px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .description h1{
+      font-size: 3rem;
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+    .description{
+      position: absolute;
+      bottom: -40px;
+      right: 100px;
+      width: 620px;
+      background: white;
+      padding: 80px;
+    }
+    .description p{
+      line-height: 1.9rem;
+      font-size: 14px;
+    }
+    .cards{
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding: 10px 200px;
+    }
+    .creation{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .creation h1{
+      font-weight: 400;
+      font-size: 2.8rem;
+      text-transform: uppercase;
+    }
+    .creation button{
+      outline: none;
+      border: 2px solid hsl(0, 0%, 0%);
+      padding: 8px 28px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      background: #fff;
+      transition: all ease 0.4s;
+    }
+    .creation button:hover{
+      background: hsl(0, 0%, 0%);
+      color: #fff;
+    }
+    .card-section{
+      padding: 60px 0px;
+      display: grid;
+      grid-template-columns: repeat(4,255px);
+      gap: 35px;
+    }
+    .card{
+      position: relative;
+      height: 450px;
+      cursor: pointer;
+      width: 255px;
+      overflow: hidden;
+    }
+    .card h3{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      text-transform: uppercase;
+      left: 0;
+      display: flex;
+      align-items: end;
+      justify-content: start;
+      padding: 40px;
+      font-weight: 300;
+      font-size: 2.2rem;
+      color: #fff;
+    }
+    .card::before{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      content: "";
+      top: 40%;
+      left: 0;
+      z-index: 10;
+      background: linear-gradient(transparent,rgba(0, 0, 0, 0.4));
+      transition: all ease 0.4s;
+    }
+    .card:hover::before{
+      top: 0;
+      background: rgba(255, 255,255, 0.6);
+      /* color: hsl(0, 0%, 0%); */
+    }
+     .card:hover h3{
+      color: hsl(0, 0%, 0%);
+      z-index: 150;
+    }
+    footer{
+      background: hsl(0, 0%, 0%);
+      padding: 40px 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .upper-footer{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .upper-footer h1{
+      color: #fff;
+    }
+    .upper-footer ion-icon{
+      font-size: 1.6rem;
+    }
+    .lower-footer{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .lower-footer a{
+      padding: 0;
+    }
+    .upper-footer a{
+      padding: 0;
+    }
+    .upper-footer ul{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+    .lower-footer ul{
+      display: flex;
+      align-items: end;
+      justify-content: end;
+      gap: 22px;
+    }
+    .lower-footer p{
+      color: #fff;
+      font-weight: 400;
+      color: hsl(0, 0%, 55%);
+    }
+  </style>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <h1>Loopstudios</h1>
+      </div>
+      <ul class="navigation">
+        <li><a href="#">Home</a> </li>
+        <li><a href="#">About</a> </li>
+        <li><a href="#">Carriers</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+        <ion-icon name="menu-outline" class="menu-button"></ion-icon>
+    </nav>
+    <div class="page-title">
+      <h1>Immersive experiences  that deliver</h1>
+    </div>
+  </header>
+  <section>
+    <div class="second-section">
+      <img src="./images/desktop/image-interactive.jpg" alt="">
+      <div class="description">
+        <h1>The leader in interactive VR</h1>
+        <p>Founded in 2011, Loopstudios has been producing world-class virtual reality
+          projects for some of the best companies around the globe. Our award-winning
+          creations have transformed businesses through digital experiences that bind
+          to their brand.</p>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="creation">
+        <h1>our creations</h1>
+        <button>see all</button>
+      </div>
+      <div class="card-section">
+        <div class="card">
+          <img src="./images/desktop/image-deep-earth.jpg" alt="Deep Earth">
+          <h3>Deep Earth</h3>
+        </div>
+        <div class="card">
+          <img src="./images/desktop/image-night-arcade.jpg" alt="Deep Earth">
+          <h3>Night Arcade</h3>
+        </div>
+        <div class="card">
+          <img src="./images/desktop/image-soccer-team.jpg" alt="Deep Earth">
+          <h3>Soccer Team VR</h3>
+        </div>
+        <div class="card">
+          <img src="./images/desktop/image-grid.jpg" alt="Deep Earth">
+          <h3>The Grid</h3>
+        </div>
+        <div class="card">
+          <img src="./images/desktop/image-from-above.jpg" alt="Deep Earth">
+          <h3>from Up Above vr</h3>
+        </div>
+        <div class="card">
+          <img src="./images/desktop/image-pocket-borealis.jpg" alt="Deep Earth">
+          <h3>pocket borealis</h3>
+        </div>
+        <div class="card">
+          <img src="./images/desktop/image-curiosity.jpg" alt="Deep Earth">
+          <h3>the curiocity</h3>
+        </div>
+        <div class="card">
+          <img src="./images/desktop/image-fisheye.jpg" alt="Deep Earth">
+          <h3>make it fish eye</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="upper-footer">
+      <h1>Loopstudio</h1>
+      <ul>
+        <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
+        <li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
+        <li><a href="#"><ion-icon name="logo-pinterest"></ion-icon></a></li>
+        <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+      </ul>
+    </div>
+    <div class="lower-footer">
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Carriers</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Supports</a></li>
+      </ul>
+      <p>&copy;2021 LoopStudio. All Right Reserved</p>
+    </div>
+  </footer>
+</body>
+
+</html>
